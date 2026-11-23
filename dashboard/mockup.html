@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>E-Commerce Analytics Dashboard - Mockup</title>
+<style>
+  :root { --bg:#f5f6fa; --card:#fff; --text:#1f2430; --muted:#6b7280; --accent:#4f46e5; --line:#e5e7eb; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#14161c; --card:#1d2029; --text:#e8eaf0; --muted:#9aa1b0; --accent:#818cf8; --line:#2c303c; }
+  }
+  * { box-sizing:border-box; }
+  body { margin:0; font-family:system-ui,Segoe UI,Arial,sans-serif; background:var(--bg); color:var(--text); display:flex; min-height:100vh; }
+  nav { width:220px; background:var(--card); border-right:1px solid var(--line); padding:20px 12px; }
+  nav h2 { font-size:15px; margin:0 8px 16px; }
+  nav a { display:block; padding:10px 12px; border-radius:8px; color:var(--text); text-decoration:none; font-size:14px; cursor:pointer; }
+  nav a.active { background:var(--accent); color:#fff; }
+  main { flex:1; padding:24px; max-width:1000px; }
+  h1 { font-size:22px; margin:0 0 4px; }
+  .note { color:var(--muted); font-size:12px; margin-bottom:20px; }
+  .kpis { display:grid; grid-template-columns:repeat(auto-fit,minmax(170px,1fr)); gap:12px; margin-bottom:20px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:16px; }
+  .kpi .label { color:var(--muted); font-size:12px; }
+  .kpi .value { font-size:24px; font-weight:600; margin-top:4px; }
+  section.module { display:none; }
+  section.module.active { display:block; }
+  table { width:100%; border-collapse:collapse; font-size:14px; }
+  th, td { text-align:left; padding:8px 6px; border-bottom:1px solid var(--line); }
+  .bars { display:flex; align-items:flex-end; gap:14px; height:160px; padding-top:10px; }
+  .bar { flex:1; background:var(--accent); border-radius:6px 6px 0 0; position:relative; }
+  .bar span { position:absolute; bottom:-20px; left:0; right:0; text-align:center; font-size:11px; color:var(--muted); }
+  .hbar { display:flex; align-items:center; gap:10px; margin:8px 0; font-size:13px; }
+  .hbar .name { width:130px; }
+  .hbar .fill { height:14px; background:var(--accent); border-radius:4px; }
+</style>
+</head>
+<body>
+<nav>
+  <h2>E-Commerce Analytics</h2>
+  <a class="active" data-m="overview">Overview</a>
+  <a data-m="sales">Sales Analytics</a>
+  <a data-m="product">Product Analytics</a>
+  <a data-m="customer">Customer Analytics</a>
+  <a data-m="category">Category Analytics</a>
+</nav>
+<main>
+  <h1>E-Commerce Analytics Dashboard</h1>
+  <div class="note">Mockup with illustrative figures only. The real app reads from PostgreSQL.</div>
+
+  <section class="module active" id="overview">
+    <div class="kpis">
+      <div class="card kpi"><div class="label">Total revenue</div><div class="value">₹2,45,000</div></div>
+      <div class="card kpi"><div class="label">Total orders</div><div class="value">350</div></div>
+      <div class="card kpi"><div class="label">Customers</div><div class="value">220</div></div>
+      <div class="card kpi"><div class="label">Products</div><div class="value">85</div></div>
+    </div>
+    <div class="card"><strong>Order status</strong>
+      <table><tr><th>Status</th><th>Orders</th></tr>
+      <tr><td>Delivered</td><td>270</td></tr><tr><td>Pending</td><td>50</td></tr><tr><td>Cancelled</td><td>30</td></tr></table>
+    </div>
+  </section>
+
+  <section class="module" id="sales">
+    <div class="card"><strong>Monthly sales trend</strong>
+      <div class="bars" style="margin-bottom:24px">
+        <div class="bar" style="height:30%"><span>Jan</span></div><div class="bar" style="height:45%"><span>Feb</span></div>
+        <div class="bar" style="height:40%"><span>Mar</span></div><div class="bar" style="height:70%"><span>Apr</span></div>
+        <div class="bar" style="height:60%"><span>May</span></div><div class="bar" style="height:90%"><span>Jun</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="module" id="product">
+    <div class="card"><strong>Top 5 best-selling products</strong>
+      <div class="hbar"><div class="name">Wireless Mouse</div><div class="fill" style="width:90%"></div></div>
+      <div class="hbar"><div class="name">USB-C Cable</div><div class="fill" style="width:75%"></div></div>
+      <div class="hbar"><div class="name">Notebook Pack</div><div class="fill" style="width:60%"></div></div>
+      <div class="hbar"><div class="name">Water Bottle</div><div class="fill" style="width:48%"></div></div>
+      <div class="hbar"><div class="name">Desk Lamp</div><div class="fill" style="width:35%"></div></div>
+    </div>
+  </section>
+
+  <section class="module" id="customer">
+    <div class="card"><strong>Highest spending customers</strong>
+      <table><tr><th>Customer</th><th>Total spent</th></tr>
+      <tr><td>Customer A</td><td>₹32,400</td></tr><tr><td>Customer B</td><td>₹28,150</td></tr>
+      <tr><td>Customer C</td><td>₹21,900</td></tr><tr><td>Customer D</td><td>₹19,300</td></tr>
+      <tr><td>Customer E</td><td>₹17,750</td></tr></table>
+    </div>
+  </section>
+
+  <section class="module" id="category">
+    <div class="card"><strong>Category-wise revenue</strong>
+      <div class="hbar"><div class="name">Electronics</div><div class="fill" style="width:92%"></div></div>
+      <div class="hbar"><div class="name">Home &amp; Kitchen</div><div class="fill" style="width:65%"></div></div>
+      <div class="hbar"><div class="name">Stationery</div><div class="fill" style="width:40%"></div></div>
+      <div class="hbar"><div class="name">Fashion</div><div class="fill" style="width:30%"></div></div>
+    </div>
+  </section>
+</main>
+<script>
+  document.querySelectorAll('nav a').forEach(function (a) {
+    a.addEventListener('click', function () {
+      document.querySelectorAll('nav a').forEach(function (x) { x.classList.remove('active'); });
+      document.querySelectorAll('section.module').forEach(function (s) { s.classList.remove('active'); });
+      a.classList.add('active');
+      document.getElementById(a.dataset.m).classList.add('active');
+    });
+  });
+</script>
+</body>
+</html>

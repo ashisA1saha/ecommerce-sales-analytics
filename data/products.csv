@@ -1,0 +1,16 @@
+product_id,product_name,category_id,price,stock_quantity
+1,Wireless Mouse,1,799.00,120
+2,USB-C Cable,1,299.00,300
+3,Bluetooth Speaker,1,1999.00,60
+4,Power Bank 10000mAh,1,1499.00,80
+5,Desk Lamp,2,899.00,70
+6,Water Bottle,2,399.00,200
+7,Non-stick Pan,2,1199.00,50
+8,Notebook Pack,3,249.00,400
+9,Gel Pen Set,3,149.00,500
+10,Cotton T-Shirt,4,599.00,150
+11,Running Shoes,4,2499.00,40
+12,Denim Jacket,4,2199.00,35
+13,Python Crash Course,5,699.00,90
+14,SQL Cookbook,5,799.00,75
+15,Data Engineering Basics,5,999.00,60

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dashboard filters and CSV export - Mockup</title>
+<style>
+  :root { --bg:#f5f6fa; --card:#fff; --text:#1f2430; --muted:#6b7280; --accent:#4f46e5; --line:#e5e7eb; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#14161c; --card:#1d2029; --text:#e8eaf0; --muted:#9aa1b0; --accent:#818cf8; --line:#2c303c; }
+  }
+  * { box-sizing:border-box; }
+  body { margin:0; font-family:system-ui,Segoe UI,Arial,sans-serif; background:var(--bg); color:var(--text); display:flex; min-height:100vh; }
+  aside { width:260px; background:var(--card); border-right:1px solid var(--line); padding:20px 16px; }
+  aside h2 { font-size:15px; margin:0 0 14px; }
+  aside h3 { font-size:12px; text-transform:uppercase; letter-spacing:.05em; color:var(--muted); margin:18px 0 6px; }
+  aside label { display:block; font-size:14px; margin:4px 0; }
+  aside input[type=date], aside select { width:100%; padding:6px; margin-bottom:6px; border:1px solid var(--line); border-radius:6px; background:var(--bg); color:var(--text); }
+  button { background:var(--accent); color:#fff; border:0; border-radius:8px; padding:8px 14px; font-size:13px; cursor:pointer; }
+  button.ghost { background:transparent; color:var(--accent); border:1px solid var(--accent); }
+  main { flex:1; padding:24px; max-width:900px; }
+  h1 { font-size:22px; margin:0 0 4px; }
+  .note { color:var(--muted); font-size:12px; margin-bottom:16px; }
+  .chips { margin-bottom:16px; font-size:12px; color:var(--muted); }
+  .chip { display:inline-block; background:var(--card); border:1px solid var(--line); border-radius:999px; padding:3px 10px; margin:0 4px 4px 0; color:var(--text); }
+  .kpis { display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:12px; margin-bottom:16px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:16px; margin-bottom:16px; }
+  .label { color:var(--muted); font-size:12px; }
+  .value { font-size:24px; font-weight:600; margin-top:4px; }
+  .head { display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; }
+  table { width:100%; border-collapse:collapse; font-size:14px; }
+  th, td { text-align:left; padding:8px 6px; border-bottom:1px solid var(--line); }
+  .empty { display:none; padding:16px; border:1px dashed var(--line); border-radius:8px; color:var(--muted); font-size:14px; }
+</style>
+</head>
+<body>
+<aside>
+  <h2>Filters</h2>
+  <h3>Date range</h3>
+  <input type="date" value="2025-01-01"><input type="date" value="2025-06-30">
+  <h3>Order status</h3>
+  <label><input type="checkbox" class="st" value="Delivered" checked> Delivered</label>
+  <label><input type="checkbox" class="st" value="Pending"> Pending</label>
+  <label><input type="checkbox" class="st" value="Cancelled"> Cancelled</label>
+  <h3>Category</h3>
+  <label><input type="checkbox" checked> Electronics</label>
+  <label><input type="checkbox" checked> Home and Kitchen</label>
+  <label><input type="checkbox" checked> Stationery</label>
+  <label><input type="checkbox" checked> Fashion</label>
+  <label><input type="checkbox" checked> Books</label>
+  <h3>City</h3>
+  <select multiple size="4"><option selected>All cities</option><option>Kolkata</option><option>Delhi</option><option>Mumbai</option></select>
+  <div style="margin-top:12px"><button class="ghost" id="reset">Reset filters</button></div>
+</aside>
+<main>
+  <h1>Sales Analytics</h1>
+  <div class="note">Mockup with illustrative figures. Try ticking the order status boxes.</div>
+  <div class="chips" id="chips"></div>
+  <div class="kpis">
+    <div class="card"><div class="label">Revenue</div><div class="value" id="rev">₹2,45,000</div></div>
+    <div class="card"><div class="label">Orders</div><div class="value" id="ord">34</div></div>
+  </div>
+  <div class="card">
+    <div class="head"><strong>Monthly revenue</strong><button onclick="alert('Real app: downloads monthly_revenue_2025-01-01_to_2025-06-30.csv')">Download CSV</button></div>
+    <table id="tbl"><tr><th>Month</th><th>Revenue</th></tr>
+      <tr><td>Jan 2025</td><td>₹32,000</td></tr><tr><td>Feb 2025</td><td>₹41,500</td></tr>
+      <tr><td>Mar 2025</td><td>₹38,200</td></tr><tr><td>Apr 2025</td><td>₹52,300</td></tr>
+      <tr><td>May 2025</td><td>₹44,000</td></tr><tr><td>Jun 2025</td><td>₹37,000</td></tr></table>
+    <div class="empty" id="empty">No data for these filters. Select at least one order status.</div>
+  </div>
+  <div class="card">
+    <div class="head"><strong>Top 5 customers</strong><button onclick="alert('Real app: downloads top_customers.csv')">Download CSV</button></div>
+    <table><tr><th>Customer</th><th>Total spent</th></tr>
+      <tr><td>Customer A</td><td>₹32,400</td></tr><tr><td>Customer B</td><td>₹28,150</td></tr><tr><td>Customer C</td><td>₹21,900</td></tr></table>
+  </div>
+</main>
+<script>
+  var data = { Delivered:[245000,34], Pending:[18000,3], Cancelled:[9000,3] };
+  function fmt(n){ return '₹' + n.toLocaleString('en-IN'); }
+  function update(){
+    var sel = Array.prototype.slice.call(document.querySelectorAll('.st:checked')).map(function(c){return c.value;});
+    var rev = 0, ord = 0;
+    sel.forEach(function(s){ rev += data[s][0]; ord += data[s][1]; });
+    document.getElementById('rev').textContent = fmt(rev);
+    document.getElementById('ord').textContent = ord;
+    document.getElementById('chips').innerHTML = '<span class="chip">Jan 2025 – Jun 2025</span>' +
+      sel.map(function(s){ return '<span class="chip">' + s + '</span>'; }).join('');
+    document.getElementById('tbl').style.display = sel.length ? '' : 'none';
+    document.getElementById('empty').style.display = sel.length ? 'none' : 'block';
+  }
+  document.querySelectorAll('.st').forEach(function(c){ c.addEventListener('change', update); });
+  document.getElementById('reset').addEventListener('click', function(){
+    document.querySelectorAll('.st').forEach(function(c){ c.checked = (c.value === 'Delivered'); });
+    update();
+  });
+  update();
+</script>
+</body>
+</html>

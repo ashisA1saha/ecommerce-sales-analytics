@@ -1,0 +1,23 @@
+customer_id,customer_name,email,city,registration_date
+1,Aarav Sharma,aarav.sharma@example.com,Kolkata,2024-07-05
+2,Priya Das,priya.das@example.com,Kolkata,2024-07-14
+3,Rohan Mehta,rohan.mehta@example.com,Mumbai,2024-07-23
+4,Ananya Iyer,ananya.iyer@example.com,Chennai,2024-08-02
+5,Vikram Singh,vikram.singh@example.com,Delhi,2024-08-11
+6,Sneha Patel,sneha.patel@example.com,Ahmedabad,2024-08-19
+7,Arjun Nair,arjun.nair@example.com,Kochi,2024-08-28
+8,Meera Reddy,meera.reddy@example.com,Hyderabad,2024-09-06
+9,Kabir Khan,kabir.khan@example.com,Lucknow,2024-09-15
+10,Isha Gupta,isha.gupta@example.com,Delhi,2024-09-24
+11,Rahul Bose,rahul.bose@example.com,Kolkata,2024-10-03
+12,Diya Joshi,diya.joshi@example.com,Pune,2024-10-12
+13,Aditya Rao,aditya.rao@example.com,Bengaluru,2024-10-21
+14,Neha Verma,neha.verma@example.com,Jaipur,2024-11-02
+15,Sourav Ghosh,sourav.ghosh@example.com,Kolkata,2024-11-11
+16,Tanvi Kulkarni,tanvi.kulkarni@example.com,Pune,2024-11-20
+17,Manish Yadav,manish.yadav@example.com,Patna,2024-12-01
+18,Pooja Menon,pooja.menon@example.com,Kochi,2024-12-10
+19,Farhan Ali,farhan.ali@example.com,Hyderabad,2024-12-18
+20,Kavya Shetty,kavya.shetty@example.com,Mangaluru,2024-12-27
+21,Bad Email,not-an-email,Delhi,2024-12-30
+22,Rohan Mehta,rohan.mehta@example.com,Mumbai,2025-01-01

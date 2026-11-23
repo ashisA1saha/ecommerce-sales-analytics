@@ -1,0 +1,21 @@
+
+# Secrets and local config
+.env
+.env.*
+
+# Python
+__pycache__/
+*.pyc
+venv/
+.venv/
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Generated files
+*.log
+# Tool-specific configuration
+.thrilia/
