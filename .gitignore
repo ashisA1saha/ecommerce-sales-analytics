@@ -19,3 +19,6 @@ Thumbs.db
 *.log
 # Tool-specific configuration
 .thrilia/
+
+.env.neon
+.env.local-backup
